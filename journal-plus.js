@@ -1,4 +1,55 @@
 (async () => {
+
+    // Defaults
+    const newJournalEntryDefaultNames = {
+        COLOR: [
+            "Red",
+            "Blue",
+            "Green",
+            "White",
+            "Black",
+            "Purple",
+            "Yellow",
+            "Brown",
+            "Orange",
+            "Pink"
+        ],
+        ANIMAL: [
+            "Bear",
+            "Cat",
+            "Dire Wolf",
+            "Penguin",
+            "Moose",
+            "Cow",
+            "Skeleton",
+            "Beetle",
+            "Dolphin",
+            "Shark",
+            "Whale",
+            "Beaver",
+            "Eagle",
+            "Owl",
+            "Giraffe",
+            "Pig",
+            "Gorilla",
+            "Dragon",
+            "Wyvern",
+            "Fish",
+            "Owlbear",
+            "Flail Snail",
+            "Mind Flayer",
+            "Rat",
+            "Rust Monster",
+            "Mimic"
+        ]
+    };
+
+    const getRandomEntryName = () => {
+        const color = newJournalEntryDefaultNames.COLOR[Math.floor(Math.random()*newJournalEntryDefaultNames.COLOR.length)];
+        const animal = newJournalEntryDefaultNames.ANIMAL[Math.floor(Math.random()*newJournalEntryDefaultNames.ANIMAL.length)];
+        return color + " " + animal;
+    };
+
     const journalPanelNode = document.getElementById("journal-panel");
 
     // Set Header Info
@@ -148,6 +199,7 @@
         }        
 
         const entriesWrapper = document.getElementById("avtt-plugin-jp-entries-wrapper")
+        entriesWrapper.innerHTML = "";
 
         // Create a blank entry to add to the wrapper list
         if (Object.keys(currentEntryItems).length > 0) {
@@ -155,7 +207,7 @@
                 const newEntryDivHTML = `
                     <div data-block="${id}" class="avtt-plugin-jp-entry-info" style="width: 100%;border: 1px solid black;padding: 5px;margin-top: 5px;">
                         <h3 class="avtt-plugin-jp-entry-info--title-${id}" style="display:inline-block;">
-                            New Entry
+                            ${getRandomEntryName()}
                         </h3>
                         <span style="float:right">
                             <button data-id="${id}" class="avtt-plugin-jp-edit-journal-entry" style="background-color: darkorange!important; padding: 2px!important; color:whitesmoke!important; font-weight:bold!important;">EDIT</button>

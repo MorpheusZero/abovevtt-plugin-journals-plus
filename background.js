@@ -14,7 +14,7 @@ const ensureIsOnVTTCampaignPage = async () => {
         chrome.storage.sync.set({ abovevtt_plugins_journal_plus_init: true });
         chrome.scripting.executeScript({
             target: { tabId: tab.id },
-            files: ['journal-plus.js']
+            files: ['common.js', 'journal-plus.js']
           });       
     } else {
         console.log("Disabling AboveVTT Plugin - [Journal Plus]");        
